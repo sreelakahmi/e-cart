@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Navbar, Container, Badge } from 'react-bootstrap'
-import Nav from 'react-bootstrap/Nav'
+import { Navbar, Container,Nav, Badge } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-
 import { Link } from 'react-router-dom'
+import {productSearch  } from '../Redux/Slices/productSlice';
 
 function Header() {
   const [wishlistCount, setWishlistCount] = useState(0)
   const [cartCount, setCartCount] = useState(0)
   const wishlist = useSelector(state => state.wishlistSlice.wishlist)
-  const cart = useSelector(state.cartReducer)
+  const cart = useSelector((state)=>state.cartReducer)
 
   useEffect(() => {
     setWishlistCount(wishlist?.length)

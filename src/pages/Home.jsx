@@ -2,15 +2,16 @@ import React, { useEffect } from 'react'
 import { Card,Row,Col,Spinner} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchProducts } from '../Slices/productSlice'
-import { addToWishlist } from '../Slices/wishlistSlice'
-import { addtoCart } from '../Redux/Slices/cartSlice'
+import { fetchProducts } from '../Redux/Slices/productSlice'
+import { addToWishlist } from '../Redux/Slices/wishlistSlice'
+import { addtoCart} from '../Redux/Slices/cartSlice'
+
 
 function Home() {
   const dispatch = useDispatch()
   const {loading,products,error} = useSelector((state)=>state.productSlice)
   const {wishlist} = useSelector (state=>state.wishlistSlice)
-  const cart = useSelector(state=>state,cartReducer)
+  const cart = useSelector(state=>state.cartReducer)
   useEffect(()=>{
     dispatch(fetchProducts())
   },[])
