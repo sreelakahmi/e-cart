@@ -11,13 +11,22 @@ const productSlice = createSlice({
     initialState:{
         products:[],
         loading:false,
-        error:""
+        error:"",
+        productsPerPage:10,
+        currentPage:1,
+
     },
     reducers:{
         productSearch:(state,action)=>{
             state.products = state.productContainer.filter(item=>item.title.toLowerCase().includes(action.payload))
-        }
-    },
+        },
+     onNavigateNext:(state)=>{
+       state.currentPagr++
+     },
+     onNavigateNext:(state)=>{
+        state.currentPage--
+    }
+},
 
     extraReducers:(builder)=>{
         builder.addCase(fetchProducts.pending,(state)=>{
